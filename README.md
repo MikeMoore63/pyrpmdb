@@ -1,4 +1,4 @@
-A python package that extracts go build information from go based executables, go.mod and go.sum files  and shared libraries. The package leverages the golang debug/buildinfo and golang.org/x/mod/modfile packages to extract the information hence relies on a shared library to do this work.
+A python package that extracts rpm package information from rpm database
 
 Example usage
 
@@ -15,12 +15,8 @@ def test_get_info(file):
 
 test_get_info("foo/bar")
 test_get_info("/usr/bin/du")
-test_get_info("/Users/auser/go/src/spire/support/oidc-discovery-provider/oidc-discovery-provider.elf")
-test_get_info("/Users/auser/go/src/spire/support/oidc-discovery-provider/oidc-discovery-provider.exe")
-test_get_info("/Users/auser/go/src/spire/support/oidc-discovery-provider/oidc-discovery-provider")
-test_get_info("/Users/auser/go/pygobuildinfo/pybuildInfo/_pyGoBuildinfo.cpython-39-darwin.so")
-test_go_mod("/Users/auser/go/src/pygobuildInfo/go.mod")
-test_go_sum("/Users/auser/go/src/pygobuildInfo/go.sum")
+test_get_info("test-data/centos5-plain-Packages")
+
 ```
 
 The result returned is always a dict object for errors  the dictionary returned contains a key;
