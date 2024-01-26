@@ -6,6 +6,6 @@ import os
 here = Path(__file__).absolute().parent.parent
 print(here)
 ext_suffix = get_config_var('EXT_SUFFIX')
-so_file = os.path.join(here, ('_ppyrpmdb' + ext_suffix))
+so_file = os.path.join(here, ('_pyrpmdb' + ext_suffix))
 
 binaries = [(so_file,'.')]
