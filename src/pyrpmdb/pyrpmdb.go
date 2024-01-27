@@ -5,10 +5,39 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/jinzhu/copier"
 	rpmdb "github.com/knqyf263/go-rpmdb/pkg"
 	"os"
 	"path/filepath"
 )
+
+type packageInfo struct {
+	Name            string
+	Version         string
+	Release         string
+	Arch            string
+	SourceRpm       string
+	Size            int
+	License         string
+	Vendor          string
+	Modularitylabel string
+	Summary         string
+	PGP             string
+	SigMD5          string
+	InstallTime     int
+	BaseNames       []string
+	DirIndexes      []int32
+	DirNames        []string
+	FileSizes       []int32
+	FileDigests     []string
+	FileModes       []uint16
+	FileFlags       []int32
+	UserNames       []string
+	GroupNames      []string
+
+	Provides []string
+	Requires []string
+}
 
 //export getrpmdbInfo
 func getrpmdbInfo(fileNameIn *C.char) *C.char {
@@ -16,10 +45,14 @@ func getrpmdbInfo(fileNameIn *C.char) *C.char {
 }
 
 func main() {
-	//getrpmdbInfo(C.CString("test-data/cbl-mariner-2.0-rpmdb.sqlite"))
+	// getrpmdbInfo(C.CString("test-data/centos5-plain-Packages"))
+	// getrpmdbInfo(C.CString("test-data/cbl-mariner-2.0-rpmdb.sqlite"))
 }
 
 func getrpmdbInfodInfoInternal(fileName string) string {
+	var (
+		rpmdbPkg *packageInfo
+	)
 	returnValue := "{ \"error\" : \"Unknown\" }"
 	db, err := rpmdb.Open(fileName)
 	if err != nil {
@@ -33,11 +66,13 @@ func getrpmdbInfodInfoInternal(fileName string) string {
 		if err != nil {
 			returnValue = fmt.Sprintf("{ \"error\": \"%s: %v\"}", fileName, err)
 		} else {
-			mySlice := []rpmdb.PackageInfo{}
+			mySlice := []packageInfo{}
 			for _, pkg := range pkgList {
+				rpmdbPkg = new(packageInfo)
+				copier.Copy(rpmdbPkg, *pkg)
 				mySlice = append(
 					mySlice,
-					*pkg)
+					*rpmdbPkg)
 			}
 			data, _ := json.Marshal(mySlice)
 			returnValue = string(data)

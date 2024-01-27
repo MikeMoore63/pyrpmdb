@@ -1,4 +1,7 @@
-A python package that extracts rpm package information from rpm database
+A python package that extracts rpm package information from rpm database.
+
+Why this and not "rpm" I needed a package that could run on environment without rpm shared libraries installable. This leverage go's portability to enable this.
+
 
 Example usage
 
@@ -35,41 +38,40 @@ or
 on success a python list of rpm package info struct is returned of this go structure serialized
 
 ```go
-type PackageInfo struct {
-	Epoch           *int
-	Name            string
-	Version         string
-	Release         string
-	Arch            string
-	SourceRpm       string
-	Size            int
-	License         string
-	Vendor          string
-	Modularitylabel string
-	Summary         string
-	PGP             string
-	SigMD5          string
-	DigestAlgorithm DigestAlgorithm
-	InstallTime     int
-	BaseNames       []string
-	DirIndexes      []int32
-	DirNames        []string
-	FileSizes       []int32
-	FileDigests     []string
-	FileModes       []uint16
-	FileFlags       []int32
-	UserNames       []string
-	GroupNames      []string
-
-	Provides []string
-	Requires []string
+{
+    Name            string
+    Version         string
+    Release         string
+    Arch            string
+    SourceRpm       string
+    Size            int
+    License         string
+    Vendor          string
+    Modularitylabel string
+    Summary         string
+    PGP             string
+    SigMD5          string
+    InstallTime     int
+    BaseNames       []string
+    DirIndexes      []int32
+    DirNames        []string
+    FileSizes       []int32
+    FileDigests     []string
+    FileModes       []uint16
+    FileFlags       []int32
+    UserNames       []string
+    GroupNames      []string
+    
+    Provides []string
+    Requires []string
 }
 ```
 ```python
 [
     {
         "Name": "package_name",
-        "Version": "version"
+        "Version": "version",
+        "Release": "blah"
     }
 ]
 ```
