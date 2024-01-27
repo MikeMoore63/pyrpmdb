@@ -16,11 +16,7 @@ func getrpmdbInfo(fileNameIn *C.char) *C.char {
 }
 
 func main() {
-	//getgobuildinfo(C.CString("foo/bar"))
-	//getgobuildinfo(C.CString("/usr/bin/du"))
-	//getgobuildinfo(C.CString("/Users/mike/go/pygobuildinfo/spire/support/oidc-discovery-provider/oidc-discovery-provider.elf"))
-	//getgobuildinfo(C.CString("/Users/mike/go/pygobuildinfo/spire/support/oidc-discovery-provider/oidc-discovery-provider.exe"))
-	//getgobuildinfo(C.CString("/Users/mike/go/pygobuildinfo/spire/support/oidc-discovery-provider/oidc-discovery-provider"))
+	//getrpmdbInfo(C.CString("test-data/cbl-mariner-2.0-rpmdb.sqlite"))
 }
 
 func getrpmdbInfodInfoInternal(fileName string) string {
