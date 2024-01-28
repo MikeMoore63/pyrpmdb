@@ -5,10 +5,13 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/jinzhu/copier"
-	rpmdb "github.com/knqyf263/go-rpmdb/pkg"
 	"os"
 	"path/filepath"
+
+	"github.com/jinzhu/copier"
+	rpmdb "github.com/knqyf263/go-rpmdb/pkg"
+
+	_ "github.com/glebarez/go-sqlite"
 )
 
 type packageInfo struct {
@@ -45,8 +48,8 @@ func getrpmdbInfo(fileNameIn *C.char) *C.char {
 }
 
 func main() {
-	// getrpmdbInfo(C.CString("test-data/centos5-plain-Packages"))
-	// getrpmdbInfo(C.CString("test-data/cbl-mariner-2.0-rpmdb.sqlite"))
+	//getrpmdbInfo(C.CString("/home/mike/pyrpmdb/test-data/centos5-plain-Packages"))
+	//getrpmdbInfo(C.CString("/home/mike/pyrpmdb/test-data/cbl-mariner-2.0-rpmdb.sqlite"))
 }
 
 func getrpmdbInfodInfoInternal(fileName string) string {
