@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/glebarez/go-sqlite v1.22.0
 	github.com/jinzhu/copier v0.4.0
-	github.com/knqyf263/go-rpmdb v0.1.0
+	github.com/knqyf263/go-rpmdb v0.1.1
 )
 
 require (
