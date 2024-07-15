@@ -32,10 +32,6 @@ then
 	yum install -y golang
 fi
 '''
-environment = """
-CC=gcc
-CGO_ENABLED=1
-"""
 
 [tool.cibuildwheel.macos]
 before-all = '''
@@ -48,7 +44,6 @@ select = "*-musllinux*"
 before-all = "wget https://golang.org/dl/go1.21.1.linux-amd64.tar.gz;tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz"
 environment = """
 PATH=$PATH:/usr/local/go/bin
-CGO_ENABLED=1
 """
 
 
