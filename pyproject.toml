@@ -41,7 +41,7 @@ CGO_ENABLED=1
 before-all = '''
 brew install go@1.21
 '''
-environment = "PATH=/opt/homebrew/opt/go@1.21/bin:$PATH"
+environment = "PATH=/usr/local/opt/go@1.21/bin:/opt/homebrew/opt/go@1.21/bin:$PATH"
 
 [[tool.cibuildwheel.overrides]]
 select = "*-musllinux*"
