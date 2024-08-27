@@ -35,8 +35,11 @@ jobs:
           CIBW_ARCHS_LINUX: auto64 aarch64
 
       - uses: actions/upload-artifact@v4
+        name: python-wheels-${{ matrix.os }}-${{ matrix.cibw_archs }}
         with:
-          path: ./wheelhouse/*.whl
+          path: |
+            ./wheelhouse/*.whl
+            ./wheelhouse/*.tar.gz
 
   build_sdist:
     name: Build source distribution
@@ -48,6 +51,7 @@ jobs:
         run: pipx run build --sdist
 
       - uses: actions/upload-artifact@v4
+        name: python-wheels-${{ matrix.os }}-${{ matrix.cibw_archs }}
         with:
           path: dist/*.tar.gz
 
@@ -68,7 +72,9 @@ jobs:
           # unpacks default artifact into dist/
           # if `name: artifact` is omitted, the action will create extra parent dir
           name: artifact
+          pattern: python-wheels*
           path: dist
+          merge-multiple: true
 
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
