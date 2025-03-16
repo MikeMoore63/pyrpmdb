@@ -2,8 +2,6 @@ module pyrpmdb
 
 go 1.24
 
-toolchain go1.24
-
 require (
 	github.com/glebarez/go-sqlite v1.22.0
 	github.com/jinzhu/copier v0.4.0
