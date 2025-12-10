@@ -1,6 +1,6 @@
 module pyrpmdb
 
-go 1.24
+go 1.25
 
 require (
 	github.com/glebarez/go-sqlite v1.22.0
