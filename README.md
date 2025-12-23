@@ -39,6 +39,7 @@ on success a python list of rpm package info struct is returned of this go struc
 
 ```go
 {
+    Epoch           *int
     Name            string
     Version         string
     Release         string
@@ -75,7 +76,7 @@ on success a python list of rpm package info struct is returned of this go struc
     }
 ]
 ```
-This spackage relies on a shared go library that leverages https://pkg.go.dev/github.com/knqyf263/go-rpmdb/pkg
+This package relies on a shared go library that leverages https://pkg.go.dev/github.com/knqyf263/go-rpmdb/pkg
 
 So relies on this for database support.
 
