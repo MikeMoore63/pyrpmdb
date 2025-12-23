@@ -9,7 +9,30 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${fileDirname}"
+            "program": "${fileDirname}",
+            "args": ["${workspaceFolder}/test-data/*"]
+        },
+        {
+            "name": "get_rpm_info",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/get_rpm_info",
+            "args": ["${workspaceFolder}/test-data/*"]
         }
-    ]
+    ],
+    "inputs": [
+    {
+      "id": "pickDir",
+      "type": "command",
+      "command": "extension.commandvariable.file.pickFile",
+      "args": {
+        "include": "**/*",
+        "display": "fileName",
+        "description": "Subdirectory to process",
+        "showDirs": true,
+        "fromFolder": { "fixed": "${workspaceFolder}/test-data/*" }
+      }
+    }
+  ]
 }
