@@ -15,6 +15,7 @@ import (
 )
 
 type packageInfo struct {
+	Epoch           *int
 	Name            string
 	Version         string
 	Release         string
@@ -27,6 +28,7 @@ type packageInfo struct {
 	Summary         string
 	PGP             string
 	SigMD5          string
+	RSAHeader       string
 	InstallTime     int
 	BaseNames       []string
 	DirIndexes      []int32
