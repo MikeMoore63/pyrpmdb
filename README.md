@@ -2,6 +2,8 @@ A python package that extracts rpm package information from rpm database.
 
 Why this and not "rpm" I needed a package that could run on environment without rpm shared libraries installable. This leverage go's portability to enable this.
 
+Dependency note: this package is being deprecated in favor of the unified package pygorpmrustinfo. If you depend on this package in another project, update your dependency declaration (for example in requirements, pyproject.toml, setup.cfg, or setup.py) to depend on pygorpmrustinfo instead. The unified package preserves the existing functionality while avoiding the multiple-Go-runtime risk discussed in [Go issue #65050](https://go.dev/issue/65050) and reducing memory usage.
+
 
 Example usage
 
